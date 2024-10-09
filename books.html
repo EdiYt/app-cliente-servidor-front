@@ -3,22 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libros</title>
     <link rel="stylesheet" href="css/styles.css">
+    <title>Catálogo de Libros</title>
 </head>
 <body>
-    <header>
-        <h1>Catálogo de Libros</h1>
-        <nav>
-            <a href="users.html">Usuarios</a>
-            <a href="books.html">Libros</a>
-        </nav>
-    </header>
+    <h1>Catálogo de Libros</h1>
+    
+    <h2>Registrar Libro</h2>
+    <form id="registerBookForm">
+        <label for="registerName">Nombre:</label>
+        <input type="text" id="registerName" required />
+        <label for="registerAuthor">Autor:</label>
+        <input type="text" id="registerAuthor" required />
+        <label for="registerGenre">Género:</label>
+        <input type="text" id="registerGenre" required />
+        <label for="registerStatus">Estatus:</label>
+        <input type="checkbox" id="registerStatus" />
+        <button type="submit">Registrar</button>
+    </form>
 
-    <main>
-        <h2>Lista de Libros</h2>
-        <ul id="books-list"></ul>
-    </main>
+    <h2>Actualizar Libro</h2>
+    <form id="updateBookForm" style="display: none;">
+        <input type="hidden" id="bookId" />
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" required />
+        <label for="author">Autor:</label>
+        <input type="text" id="author" required />
+        <label for="genre">Género:</label>
+        <input type="text" id="genre" required />
+        <label for="status">Estatus:</label>
+        <input type="checkbox" id="status" />
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <h2>Lista de Libros</h2>
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
     <script src="js/books.js"></script>
 </body>
