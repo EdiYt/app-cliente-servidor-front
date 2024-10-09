@@ -27,14 +27,19 @@ function editUser(userId) {
     fetch(`http://localhost:3000/api/users/${userId}`)
         .then(response => response.json())
         .then(user => {
-            document.getElementById('userId').value = user.id;
+            document.getElementById('userId').value = user.id; 
             document.getElementById('name').value = user.nombre;
             document.getElementById('email').value = user.email;
 
             // Mostrar el formulario de actualización
-            document.getElementById('updateUserForm').style.display = 'block';
+            document.getElementById('updateSection').style.display = 'block';
         })
         .catch(error => console.error('Error al cargar el usuario:', error));
+}
+
+function hideUpdateForm() {
+    // Ocultar el formulario de actualización
+    document.getElementById('updateSection').style.display = 'none';
 }
 
 document.getElementById('updateUserForm').addEventListener('submit', function (event) {
@@ -57,7 +62,7 @@ document.getElementById('updateUserForm').addEventListener('submit', function (e
             document.querySelector('#userTable tbody').innerHTML = '';
             loadUsers();
             // Ocultar el formulario después de la actualización
-            document.getElementById('updateUserForm').style.display = 'none';
+            hideUpdateForm();
         } else {
             alert('Error al actualizar el usuario.');
         }
