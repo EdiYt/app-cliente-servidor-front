@@ -10,7 +10,7 @@
     <h1>Catálogo de Libros</h1>
     
     <h2>Registrar Libro</h2>
-    <form id="registerBookForm">
+    <form id="registerBookForm" enctype="multipart/form-data">
         <label for="registerName">Nombre:</label>
         <input type="text" id="registerName" required />
         <label for="registerAuthor">Autor:</label>
@@ -19,8 +19,10 @@
         <input type="text" id="registerGenre" required />
         <label for="registerStatus">Estatus:</label>
         <input type="checkbox" id="registerStatus" />
+        <label for="registerPdf">Seleccionar PDF:</label>
+        <input type="file" id="registerPdf" accept="application/pdf" required />
         <button type="submit">Registrar</button>
-    </form>
+    </form>    
 
     <h2 id="updateTitle" style="display: none;">Actualizar Libro</h2>
 <form id="updateBookForm" style="display: none;">
