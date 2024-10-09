@@ -7,34 +7,44 @@
     <title>Catálogo de Usuarios</title>
 </head>
 <body>
-    <h1>Catálogo de Usuarios</h1>
-    
-    <!-- Tabla de usuarios -->
-    <table id="userTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="users.html">Catálogo de Usuarios</a></li>
+            <li><a href="books.html">Catálogo de Libros</a></li>
+        </ul>
+    </nav>
 
-    <!-- Sección para actualizar el usuario -->
-    <div id="updateSection" style="display: none;">
-        <h2>Actualizar Usuario</h2>
-        <form id="updateUserForm">
-            <label for="userId">ID:</label>
-            <input type="text" id="userId" disabled /> <!-- El id no se puede modificar -->
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" required />
-            <label for="email">Email:</label>
-            <input type="email" id="email" required />
-            <button type="submit">Actualizar</button>
-            <button type="button" onclick="hideUpdateForm()">Cancelar</button>
-        </form>
+    <div class="container">
+        <h1>Catálogo de Usuarios</h1>
+        
+        <!-- Tabla de usuarios -->
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <!-- Actualizar un usuario -->
+        <div id="updateSection" style="display: none;">
+            <h2>Actualizar Usuario</h2>
+            <form id="updateUserForm">
+                <label for="userId">ID:</label>
+                <input type="text" id="userId" disabled /> <!-- ID no modificable -->
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" required />
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+                <button type="submit">Actualizar</button>
+                <button type="button" onclick="hideUpdateForm()">Cancelar</button>
+            </form>
+        </div>
     </div>
 
     <script src="js/users.js"></script>
