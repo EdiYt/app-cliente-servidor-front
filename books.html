@@ -22,19 +22,20 @@
         <button type="submit">Registrar</button>
     </form>
 
+    <h2 id="updateTitle" style="display: none;">Actualizar Libro</h2>
+<form id="updateBookForm" style="display: none;">
+    <input type="hidden" id="bookId" />
     <h2>Actualizar Libro</h2>
-    <form id="updateBookForm" style="display: none;">
-        <input type="hidden" id="bookId" />
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" required />
-        <label for="author">Autor:</label>
-        <input type="text" id="author" required />
-        <label for="genre">Género:</label>
-        <input type="text" id="genre" required />
-        <label for="status">Estatus:</label>
-        <input type="checkbox" id="status" />
-        <button type="submit">Actualizar</button>
-    </form>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" required />
+    <label for="author">Autor:</label>
+    <input type="text" id="author" required />
+    <label for="genre">Género:</label>
+    <input type="text" id="genre" required />
+    <label for="status">Estatus:</label>
+    <input type="checkbox" id="status" />
+    <button type="submit">Actualizar</button>
+</form>
 
     <h2>Lista de Libros</h2>
     <table id="bookTable">
