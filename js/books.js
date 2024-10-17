@@ -12,7 +12,7 @@ function loadBooks() {
         })
         .then(books => {
             const bookTable = document.querySelector('#bookTable tbody');
-            bookTable.innerHTML = ''; 
+            bookTable.innerHTML = '';
             books.forEach(book => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -22,6 +22,7 @@ function loadBooks() {
                     <td>${book.genero}</td>
                     <td>
                         <button onclick="editBook(${book.id})">Actualizar</button>
+                        <button onclick="viewPdf('${book.pdfUrl}')">Ver PDF</button>
                     </td>
                 `;
                 bookTable.appendChild(row);
@@ -73,9 +74,9 @@ document.getElementById('updateBookForm').addEventListener('submit', function (e
     .then(response => {
         if (response.ok) {
             alert('Libro actualizado correctamente.');
-            loadBooks(); 
-            document.getElementById('updateBookForm').reset(); 
-            document.getElementById('updateBookForm').style.display = 'none'; 
+            loadBooks();
+            document.getElementById('updateBookForm').reset();
+            document.getElementById('updateBookForm').style.display = 'none';
         } else {
             alert('Error al actualizar el libro.');
         }
@@ -85,20 +86,19 @@ document.getElementById('updateBookForm').addEventListener('submit', function (e
 
 document.getElementById('registerBookForm').addEventListener('submit', function (event) {
     event.preventDefault();
-    const formData = {
-        nombre: document.getElementById('registerName').value,
-        autor: document.getElementById('registerAuthor').value,
-        genero: document.getElementById('registerGenre').value,
-        estatus: document.getElementById('registerStatus').checked,
-    };
 
-    fetch('http://localhost:3000/api/books', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
+    const formData = new FormData();
+formData.append('nombre', document.getElementById('registerName').value);
+formData.append('autor', document.getElementById('registerAuthor').value);
+formData.append('genero', document.getElementById('registerGenre').value);
+formData.append('estatus', document.getElementById('registerStatus').checked);
+formData.append('pdf', document.getElementById('registerPdf').files[0]); // Este debe ser correcto
+
+fetch('http://localhost:3000/api/books', {
+    method: 'POST',
+    body: formData
+})
+
     .then(response => {
         if (!response.ok) {
             return response.json().then(err => {
@@ -109,11 +109,20 @@ document.getElementById('registerBookForm').addEventListener('submit', function 
     })
     .then(data => {
         alert('Libro registrado correctamente.');
-        loadBooks(); 
-        document.getElementById('registerBookForm').reset(); 
+        loadBooks();
+        document.getElementById('registerBookForm').reset();
     })
     .catch(error => {
         console.error('Error al registrar el libro:', error);
         alert('Error al registrar el libro: ' + error.message);
     });
 });
+
+// Función para mostrar el PDF en un iframe
+function viewPdf(pdfUrl) {
+    const iframe = document.createElement('iframe');
+    iframe.src = pdfUrl;
+    iframe.style.width = '100%';
+    iframe.style.height = '500px';
+    document.body.appendChild(iframe);
+}
